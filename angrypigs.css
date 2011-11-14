@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#game,
+#game-over,
+#level,
+#score {
+  background: #EEE;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
+#game,
+#game-over {
+  cursor: url(pig.png) 24 23, pointer;
+  height: 600px;
+  margin: -300px 0 0 -400px;
+  width: 800px;
+}
+
+#level,
+#score {
+  line-height: 2em;
+  height: 2em;
+  margin-top: 310px;
+  padding: 0 10px;
+  width: 130px;
+}
+
+#score {
+  margin-left: 250px;
+}
+
+#score:before {
+  content:'Score: '
+}
+
+#level {
+  margin-left: -400px;
+}
+
+#game-over {
+  background: rgba(238, 238, 238, .8);
+  color: red;
+  font-size: 100px;
+  line-height: 600px;
+  text-align: center;
+  visibility: hidden;
+}
+
+#level:before {
+  content:'Level: '
+}
+
+.bird {
+  background-image: url(./angrypigs.png);
+  position: absolute;
+}
+
+.bird.big {
+  background-position: -634px -156px;
+  height: 98px;
+  width: 98px;
+}
+
+.bird.black {
+  background-position: -777px -446px;
+  height: 81px;
+  width: 62px;
+}
+
+.bird.blue {
+  background-position: 0 -537px;
+  height: 30px;
+  width: 31px;
+}
+
+.bird.red {
+  background-position: -951px -798px;
+  height: 44px;
+  width: 46px;
+}
+
+.bird.white {
+  background-position: -409px -543px;
+  height: 93px;
+  width: 81px;
+}
+
+.bird.yellow {
+  background-position: -588px -915px;
+  height: 52px;
+  width: 68px;
+}
