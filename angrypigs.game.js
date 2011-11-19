@@ -19,7 +19,7 @@
   // On game birds
   AngryPigs.birds = [];
   // Maximum bird on the board
-  AngryPigs.maxBirds = 10;
+  AngryPigs.maxBirds = 0;
   
   /**
    * Construct a randomly chosen type of bird

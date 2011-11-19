@@ -1,23 +1,24 @@
 var classBuilder = function(obj) {
-	function addInfo(member)
+	if(typeof(obj) === 'object')
 	{
-		for (var v in member)
-			this.v = member[v];
+		for (var v in obj.properties)
+		{
+			obj.constructor.prototype[v] = obj.properties[v];
+		}
+	
+		for (var v in obj.methods)
+		{
+			obj.constructor.prototype[v] = obj.methods[v];
+		}
+		for (var v in obj.staticMembers)
+		{
+			obj.constructor[v] = obj.staticMembers[v];
+		}
+		return obj.constructor;
 	}
-
-	function addPrototypeInfo(member)
-	{
-		for (var v in member)
-			this.prototype.v = member[v];
-	}
-	console.log(obj.properties);
-	addInfo(obj.properties).call(obj.constructor);
-	addInfo(obj.methods).call(obj.constructor);
-	addPrototypeInfo(obj.staticMembers).call(obj.constructor);
-	console.log(obj.constructor);
-	return obj.constructor;
 }
 
+/* ******** test ******* */
 
 var Being = classBuilder({
     constructor: function(aName) {
@@ -35,45 +36,5 @@ var Being = classBuilder({
     }
 });
 
-/* old version 
-function addInfo(member)
-{
-	for (var v in member)
-		this.v = member[v];
-}
 
 
-
-var classBuilder = function(obj) {
-	function addProperties()
-	{
-		for (var v in obj.properties)
-		{
-			this.v = obj.properties[v];
-			console.log(v);
-		}
-	}
-	function addMethods()
-	{
-		for (var v in obj.methods)
-		{
-			this.v = obj.methods[v];
-			console.log(v);
-		}
-	}
-	function addStaticMembers()
-	{
-		for (var v in obj.staticMembers)
-		{
-			this.prototype.v = obj.staticMembers[v];
-			console.log(v);
-		}
-	}
-	addProperties.call(obj.constructor);
-	addMethods.call(obj.constructor);
-	addStaticMembers.call(obj.constructor);
-	console.log(obj.constructor);
-        return obj.constructor;
-}
-
- * */
