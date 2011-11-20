@@ -19,14 +19,15 @@
   // On game birds
   AngryPigs.birds = [];
   // Maximum bird on the board
-  AngryPigs.maxBirds = 0;
+  AngryPigs.maxBirds = 3;
   
   /**
    * Construct a randomly chosen type of bird
    */
   AngryPigs.constructRandomBird = function() {
     // Choose a bird constructor randomly
-    var birdConstructor = this.birdsArray[Math.ceil(this.birdsArray.length * Math.random()) - 1];
+    //var birdConstructor = this.birdsArray[Math.ceil(this.birdsArray.length * Math.random()) - 1];
+    var birdConstructor = this.birdsArray[Math.ceil(2*Math.random())];
     
     return new birdConstructor();
   };
