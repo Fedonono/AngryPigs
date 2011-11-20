@@ -76,14 +76,15 @@
     if (score % 5 === 0)
     {
 		var level = parseInt($('#level').html());
-		$('#level').html(level+1);
+		level = level+1;
+		$('#level').html(level);
 		if (level === 3)
-			$('#game').css("cursor", "url('http://narnoxx.free.fr/angrypigs/nyan-cat.png') 24 23, pointer");
+			$('#game').css("cursor", "url('http://narnoxx.free.fr/angrypigs/nyan-cat.cur'), pointer");
 		if (level === 4)
 		{ // j'ai pris la random color de : http://benwatts.ca/sandbox/jquery-colourific/, j'aurai pu moi même faire une fonction avec des couleurs de bases mais j'ai trouvé son code épique.
 			// setupColourific
 			function setupColourific(){
-				var elementToChange = $("h4.colourchange"); // the element that's changing
+				var elementToChange = $("body"); // the element that's changing
 				changeColour(elementToChange);
 				window.setInterval( function(){changeColour(elementToChange)}, 500);
 			}
@@ -118,6 +119,25 @@
 				return '#'+intToHex(r)+intToHex(g)+intToHex(b);
 			}
 			setupColourific();
+		}
+		if (level === 5)
+		{
+			var audio = document.createElement('audio');
+			audio.id = "nyanCat";
+			audio.src = "http://narnoxx.free.fr/angrypigs/nyancat.ogg";
+			$('#game')[0].appendChild(audio);
+			var nyanCat = document.getElementById('nyanCat');
+			if (typeof audio.loop == 'boolean')
+			{
+				$('#nyanCat')[0].loop = true;
+			}
+			else {
+				$('#nyanCat')[0].addEventListener('ended', function() { //obligé sous firefox, le loop foire :(
+					this.currentTime = 0;
+					this.play();
+				}, false);
+			}
+			$('#nyanCat')[0].play();
 		}
 	}
   };
