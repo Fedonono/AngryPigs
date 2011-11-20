@@ -30,7 +30,6 @@ AngryPigs.Birds.Black = function() {
 	this["shiftY"] = function() { this.offset.top += this.yDir/2; };
 	this["changeYDirection"] = function() {
 		this.yDir = (this.yDir*2*Math.random())*-1;
-		console.log("y");
 	};
 	this["changeXDirection"] = function()
 	{

@@ -98,8 +98,6 @@
 				var b = Math.floor(Math.random()*256);
 
 				// change the text colour of this element
-				console.log(e);
-				console.log(e.hide());
 				e.hide().css("background", getHex(r,g,b)).fadeIn("fast");
 
 			}
