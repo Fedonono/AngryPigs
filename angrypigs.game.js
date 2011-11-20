@@ -137,6 +137,10 @@
 			}
 			$('#nyanCat')[0].play();
 		}
+		$('#game').addClass('barrel_roll'); // src = http://www.acumenholdings.com/blog/how-did-google-do-a-barrel-roll/
+		setTimeout(function(){
+			$('#game').removeClass('barrel_roll');
+		},4000);
 	}
   };
 
