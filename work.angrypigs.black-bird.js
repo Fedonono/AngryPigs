@@ -4,10 +4,13 @@ AngryPigs.Birds.Black = function() {
 		if(this[i]===undefined) // s'il n'est pas défini, on le redéfinit
 			this[i]=AngryPigs.Bird.prototype[i];
 	}
+	var audio = document.createElement('audio');
+	audio.src = "http://narnoxx.free.fr/angrypigs/boom.ogg"; // kikou audio
+	this.element.appendChild(audio);
 	var compteur = 0;
 	var explosion = false;
 	this["shiftX"] = function() {
-		this.offset.left += this.xDir;
+		this.offset.left += this.xDir/2;
 		compteur += 1;
 		if (this.xDir === 0 && compteur > 5)
 		{
@@ -19,38 +22,32 @@ AngryPigs.Birds.Black = function() {
 			}
 			else // si tout est finit, on le redémarre
 			{
-				this.$element.css({backgroundPosition: '-777px -446px', width: '62px', height: '81px'});
-				this.xDir = 3;
-				this.yDir = 3;
 				explosion = false;
+				AngryPigs.removeBird(this);
 			}
 		}
 	};
-	this["shiftY"] = function() { this.offset.top += this.yDir; }; //to change
+	this["shiftY"] = function() { this.offset.top += this.yDir/2; };
 	this["changeYDirection"] = function() {
-		this.yDir *= -1.03;
-		console.log("lol");
-		if (this.yDir > 15)
-			this.$element.css({backgroundPosition: '-670px -677px', height: '75px'});
-		if (this.yDir > 20) // dès qu'il arrive à une accélération trop importante, on immobilise l'oiseau et on lance un compteur pour ses étapes d'explosion et son redémarrage
+		this.yDir = (this.yDir*2*Math.random())*-1;
+		console.log("y");
+	};
+	this["changeXDirection"] = function()
+	{
+		if (this.xDir > 20)
+			this.$element.css({backgroundPosition: '-650px -445px', height: '82px'});
+		if (this.xDir > 25) // dès qu'il arrive à une accélération trop importante, on immobilise l'oiseau et on lance un compteur pour ses étapes d'explosion et son redémarrage
 		{				
-			this.$element.css({backgroundPosition: '-868px -601px', width: '85px', height: '78px'});
+			//this.$element.css({backgroundPosition: '-868px -601px', width: '85px', height: '78px'});
+			this.$element.css({backgroundPosition: '-673px -353px', width: '90px', height: '89px'}); // explosion + belle
 			this.xDir = 0;
 			this.yDir = 0;
 			compteur = 0;
 			explosion = false;
-			var audio = document.createElement('audio');
-			audio.src = "http://narnoxx.free.fr/angrypigs/boom.ogg"; // kikou audio
-			audio.autoplay = true;
-			this.element.appendChild(audio);
-			console.log(this.$element);
-			console.log(this.element);
+			this.element.firstChild.play();
 			
 		}
-	};
-	this["changeXDirection"] = function()
-	{
-		this.xDir *= -1.03;
+		this.xDir *= -1.05;
 	};
 };
 

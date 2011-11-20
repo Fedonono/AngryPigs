@@ -19,15 +19,14 @@
   // On game birds
   AngryPigs.birds = [];
   // Maximum bird on the board
-  AngryPigs.maxBirds = 3;
+  AngryPigs.maxBirds = 10;
   
   /**
    * Construct a randomly chosen type of bird
    */
   AngryPigs.constructRandomBird = function() {
     // Choose a bird constructor randomly
-    //var birdConstructor = this.birdsArray[Math.ceil(this.birdsArray.length * Math.random()) - 1];
-    var birdConstructor = this.birdsArray[Math.ceil(2*Math.random())];
+    var birdConstructor = this.birdsArray[Math.ceil(this.birdsArray.length * Math.random()) - 1];
     
     return new birdConstructor();
   };
@@ -72,6 +71,55 @@
    */
   AngryPigs.birdClicked = function(e) {
     AngryPigs.removeBird(e.target.bird);
+    var score = parseInt($('#score').html()); // have to convert in number
+    $('#score').html(score+1);
+    if (score % 5 === 0)
+    {
+		var level = parseInt($('#level').html());
+		$('#level').html(level+1);
+		if (level === 3)
+			$('#game').css("cursor", "url('http://narnoxx.free.fr/angrypigs/nyan-cat.png') 24 23, pointer");
+		if (level === 4)
+		{ // j'ai pris la random color de : http://benwatts.ca/sandbox/jquery-colourific/, j'aurai pu moi même faire une fonction avec des couleurs de bases mais j'ai trouvé son code épique.
+			// setupColourific
+			function setupColourific(){
+				var elementToChange = $("h4.colourchange"); // the element that's changing
+				changeColour(elementToChange);
+				window.setInterval( function(){changeColour(elementToChange)}, 500);
+			}
+
+			// changeColour
+			function changeColour(e){
+
+				// random values between 0 and 255, these are the 3 colour values
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+
+				// change the text colour of this element
+				console.log(e);
+				console.log(e.hide());
+				e.hide().css("background", getHex(r,g,b)).fadeIn("fast");
+
+			}
+
+			// intToHex()
+			function intToHex(n){
+				n = n.toString(16);
+				// eg: #0099ff. without this check, it would output #099ff
+				if( n.length < 2)
+				n = "0"+n;
+				return n;
+			}
+
+			// getHex()
+			// shorter code for outputing the whole hex value
+			function getHex(r, g, b){
+				return '#'+intToHex(r)+intToHex(g)+intToHex(b);
+			}
+			setupColourific();
+		}
+	}
   };
 
   /**
@@ -111,3 +159,5 @@
     }
   });
 })();
+
+		
