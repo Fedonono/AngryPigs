@@ -18,23 +18,6 @@ var classBuilder = function(obj) {
 	}
 }
 
-/* ******** test ******* */
-
-var Being = classBuilder({
-    constructor: function(aName) {
-		this.name = aName;
-    },
-    properties: {
-		lives: true
-    },
-    methods: {
-		sayHello: function() { /* Some code */ }
-    },
-    staticMembers: {
-		creator: 'Chuck Norris',
-		fromArray: function(namesArray) { /* Some code */ }
-    }
-});
 
 
 

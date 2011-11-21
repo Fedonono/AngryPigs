@@ -1,4 +1,4 @@
-AngryPigs.birdClicked = function(e) {
+(AngryPigs.birdClicked = function(e) {
 AngryPigs.removeBird(e.target.bird);
     var score = parseInt($('#score').html()); // have to convert in number
     $('#score').html(score+1);
@@ -53,21 +53,22 @@ AngryPigs.removeBird(e.target.bird);
 			audio.id = "nyanCat";
 			audio.src = "http://narnoxx.free.fr/angrypigs/nyancat.ogg";
 			$('#game')[0].appendChild(audio);
+			var nyanCat = document.getElementById('nyanCat');
 			if (typeof audio.loop == 'boolean')
 			{
-				$('#nyanCat')[0].loop = true;
+				nyanCat.loop = true;
 			}
 			else {
-				$('#nyanCat')[0].addEventListener('ended', function() { //obligé sous firefox, le loop foire :(
+				nyanCat.addEventListener('ended', function() { //obligé sous firefox, le loop foire :(
 					this.currentTime = 0;
 					this.play();
 				}, false);
 			}
-			$('#nyanCat')[0].play();
+			nyanCat.play();
 		}
 		/*$('#game').addClass('barrel_roll'); // src = http://www.acumenholdings.com/blog/how-did-google-do-a-barrel-roll/ marche pas sous chrome, je sais pas poruquoi :(
 		setTimeout(function(){
 			$('#game').removeClass('barrel_roll');
 		},4000);*/
 	}
-}
+})();
