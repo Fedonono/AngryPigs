@@ -52,18 +52,8 @@ AngryPigs.removeBird(e.target.bird);
 			var audio = document.createElement('audio');
 			audio.id = "nyanCat";
 			audio.src = "http://narnoxx.free.fr/angrypigs/nyancat.ogg";
+			audio.loop = 99999;
 			$('#game')[0].appendChild(audio);
-			var nyanCat = document.getElementById('nyanCat');
-			if (typeof audio.loop == 'boolean')
-			{
-				$('#nyanCat')[0].loop = true;
-			}
-			else {
-				$('#nyanCat')[0].addEventListener('ended', function() { //obligé sous firefox, le loop foire :(
-					this.currentTime = 0;
-					this.play();
-				}, false);
-			}
 			$('#nyanCat')[0].play();
 		}
 		/*$('#game').addClass('barrel_roll'); // src = http://www.acumenholdings.com/blog/how-did-google-do-a-barrel-roll/ marche pas sous chrome, je sais pas poruquoi :(
