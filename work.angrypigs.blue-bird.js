@@ -5,6 +5,6 @@ AngryPigs.Birds.Blue = function() {
 			this[i]=AngryPigs.Bird.prototype[i];
 	}
 	this["shiftX"] = function() { this.offset.left += this.xDir/6.5; };
-	this["shiftY"] = function() { this.offset.top += 23*Math.sin(this.offset.left/26); };
+	this["shiftY"] = function() { this.offset.top += 18*Math.sin(this.offset.left/26)+1; }; //t'avais mis 23
 };
 
