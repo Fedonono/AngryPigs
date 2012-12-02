@@ -2,20 +2,20 @@
 AngryPigs.removeBird(e.target.bird);
     var score = parseInt($('#score').html()); // have to convert in number
     $('#score').html(score+1);
-    if (score % 5 === 0)
+    if (score % 2 === 0)
     {
 		var level = parseInt($('#level').html());
 		level = level+1;
 		$('#level').html(level);
 		if (level === 3)
-			$('#game').css("cursor", "url('http://narnoxx.free.fr/angrypigs/nyan-cat.cur'), pointer");
+			$('#game').css("cursor", "url('./style/images/nyan-cat.cur'), pointer");
 		if (level === 4)
-		{ // j'ai pris la random color de : http://benwatts.ca/sandbox/jquery-colourific/, j'aurai pu moi même faire une fonction avec des couleurs de bases mais j'ai trouvé son code épique.
+		{ // random color : http://benwatts.ca/sandbox/jquery-colourific/
 			// setupColourific
 			function setupColourific(){
 				var elementToChange = $("body"); // the element that's changing
 				changeColour(elementToChange);
-				window.setInterval( function(){changeColour(elementToChange)}, 500);
+				window.setInterval( function(){changeColour(elementToChange)}, 1000);
 			}
 
 			// changeColour
@@ -51,7 +51,7 @@ AngryPigs.removeBird(e.target.bird);
 		{
 			var audio = document.createElement('audio');
 			audio.id = "nyanCat";
-			audio.src = "http://narnoxx.free.fr/angrypigs/nyancat.ogg";
+			audio.src = "./ressources/nyancat.ogg";
 			$('#game')[0].appendChild(audio);
 			var nyanCat = document.getElementById('nyanCat');
 			if (typeof audio.loop == 'boolean')
@@ -66,9 +66,11 @@ AngryPigs.removeBird(e.target.bird);
 			}
 			nyanCat.play();
 		}
-		/*$('#game').addClass('barrel_roll'); // src = http://www.acumenholdings.com/blog/how-did-google-do-a-barrel-roll/ marche pas sous chrome, je sais pas poruquoi :(
-		setTimeout(function(){
-			$('#game').removeClass('barrel_roll');
-		},4000);*/
+		if ((level > 5) && (level%6 === 0)) {
+			$('#game').addClass('barrel_roll');
+			setTimeout(function(){
+				$('#game').removeClass('barrel_roll');
+			},4000);
+		}
 	}
 })();

@@ -17,7 +17,3 @@ var classBuilder = function(obj) {
 		return obj.constructor;
 	}
 }
-
-
-
-

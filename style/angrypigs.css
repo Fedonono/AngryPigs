@@ -20,7 +20,7 @@ body {
 
 #game,
 #game-over {
-  cursor: url(pig.png) 24 23, pointer;
+  cursor: url(./images/pig.png) 24 23, pointer;
   height: 600px;
   margin: -300px 0 0 -400px;
   width: 800px;
@@ -61,7 +61,7 @@ body {
 }
 
 .bird {
-  background-image: url(./angrypigs.png);
+  background-image: url(./images/angrypigs.png);
   position: absolute;
 }
 
