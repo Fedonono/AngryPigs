@@ -10,7 +10,7 @@ This game was an exercise given by my teacher [hsablonniere].
 Techs
 -----------
 
-* [html5] - html5
+* [html5] - html5 (use canvas)
 * [jQuery] - jQuery
 
 Demo
