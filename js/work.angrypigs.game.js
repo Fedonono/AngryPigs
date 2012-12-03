@@ -1,14 +1,18 @@
 (AngryPigs.birdClicked = function(e) {
-AngryPigs.removeBird(e.target.bird);
-    var score = parseInt($('#score').html()); // have to convert in number
-    $('#score').html(score+1);
+	var scoreElem = $('#score');
+	var levelElem = $('#level');
+	var gameElem = $('#game');
+
+	AngryPigs.removeBird(e.target.bird);
+    var score = parseInt(scoreElem.html()); // have to convert in number
+    scoreElem.html(score+1);
     if (score % 2 === 0)
     {
-		var level = parseInt($('#level').html());
+		var level = parseInt(levelElem.html());
 		level = level+1;
-		$('#level').html(level);
+		levelElem.html(level);
 		if (level === 3)
-			$('#game').css("cursor", "url('./style/images/nyan-cat.cur'), pointer");
+			gameElem.css("cursor", "url('./style/images/nyan-cat.cur'), pointer");
 		if (level === 4)
 		{ // random color : http://benwatts.ca/sandbox/jquery-colourific/
 			// setupColourific
@@ -52,7 +56,7 @@ AngryPigs.removeBird(e.target.bird);
 			var audio = document.createElement('audio');
 			audio.id = "nyanCat";
 			audio.src = "./ressources/nyancat.ogg";
-			$('#game')[0].appendChild(audio);
+			gameElem[0].appendChild(audio);
 			var nyanCat = document.getElementById('nyanCat');
 			if (typeof audio.loop == 'boolean')
 			{
@@ -67,9 +71,9 @@ AngryPigs.removeBird(e.target.bird);
 			nyanCat.play();
 		}
 		if ((level > 5) && (level%6 === 0)) {
-			$('#game').addClass('barrel_roll');
+			gameElem.addClass('barrel_roll');
 			setTimeout(function(){
-				$('#game').removeClass('barrel_roll');
+				gameElem.removeClass('barrel_roll');
 			},4000);
 		}
 	}
